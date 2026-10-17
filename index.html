@@ -1,0 +1,1104 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="Catálogo digital de Zapatería Milian con visualización 3D y realidad aumentada."
+    >
+
+    <title>Milian — Calzado hecho a mano</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/carrito.css">
+
+    <!-- MODEL VIEWER -->
+    <script
+        type="module"
+        src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js">
+    </script>
+</head>
+
+<body>
+
+    <!-- ACCESIBILIDAD -->
+
+    <a href="#coleccion" class="skip-link">
+        Saltar a la colección
+    </a>
+
+    <!-- NAVBAR -->
+
+    <nav class="navbar" id="navbar">
+
+        <div class="nav-container">
+
+            <a href="#inicio" class="logo">
+                <span class="logo-main">MILIAN</span>
+                <span class="logo-small">CALZADO DE CUERO</span>
+            </a>
+
+            <div class="nav-links" id="navLinks">
+                <a href="#inicio">Inicio</a>
+                <a href="#coleccion">Colección</a>
+                <a href="#experiencia">Experiencia 3D</a>
+                <a href="#nosotros">Oficio</a>
+            </div>
+
+            <div class="nav-actions">
+                <button class="cart-trigger" id="openCart" type="button" aria-label="Abrir carrito">🛒 Carrito <span id="cartCount">0</span></button>
+
+                <button
+                    class="account-button"
+                    id="accountButton"
+                    type="button"
+                >
+                    <svg
+                        width="17"
+                        height="17"
+                        viewBox="0 0 16 16"
+                        fill="none"
+                        aria-hidden="true"
+                    >
+                        <circle
+                            cx="8"
+                            cy="5.2"
+                            r="2.9"
+                            stroke="currentColor"
+                            stroke-width="1.2"
+                        />
+
+                        <path
+                            d="M2.3 14c.9-3 3-4.5 5.7-4.5s4.8 1.5 5.7 4.5"
+                            stroke="currentColor"
+                            stroke-width="1.2"
+                            stroke-linecap="round"
+                        />
+                    </svg>
+
+                    <span>Mi cuenta</span>
+                </button>
+
+                <button
+                    class="menu-button"
+                    id="menuButton"
+                    type="button"
+                    aria-label="Abrir menú"
+                    aria-controls="navLinks"
+                    aria-expanded="false"
+                >
+                    <span></span>
+                    <span></span>
+                </button>
+
+            </div>
+
+        </div>
+
+    </nav>
+
+    <!-- HERO -->
+
+    <header class="hero" id="inicio">
+
+        <div class="hero-background"></div>
+        <div class="hero-overlay"></div>
+
+        <div class="hero-content">
+
+            <div class="hero-copy">
+
+                <span class="eyebrow">
+                    COLECCIÓN 2026
+                </span>
+
+                <h1 class="reveal">
+                    El carácter
+                    <br>
+                    comienza
+                    <span>en tus pasos.</span>
+                </h1>
+
+                <p class="reveal">
+                    Descubre calzado elaborado con atención al detalle
+                    y explora nuestros modelos en tres dimensiones antes
+                    de elegir tu próximo par.
+                </p>
+
+                <div class="hero-buttons reveal">
+
+                    <a
+                        href="#coleccion"
+                        class="button button-light"
+                    >
+                        Explorar colección
+                        <span>↗</span>
+                    </a>
+
+                    <a
+                        href="#experiencia"
+                        class="button button-ghost"
+                    >
+                        Explorar en 3D
+                    </a>
+
+                </div>
+
+            </div>
+
+            <div class="hero-bottom reveal">
+
+                <div class="hero-feature">
+                    <strong>01</strong>
+                    <span>Visualización interactiva 360°</span>
+                </div>
+
+                <div class="hero-feature">
+                    <strong>02</strong>
+                    <span>Realidad aumentada desde el navegador</span>
+                </div>
+
+                <div class="hero-feature">
+                    <strong>03</strong>
+                    <span>Catálogo digital accesible desde móvil</span>
+                </div>
+
+            </div>
+
+        </div>
+
+    </header>
+
+    <!-- INTRODUCCIÓN -->
+
+    <section class="intro-section">
+
+        <div class="container">
+
+            <div class="intro-grid">
+
+                <div class="section-index">
+                    01 / COLECCIÓN
+                </div>
+
+                <div>
+                    <h2 class="section-title reveal">
+                        Diseñado para durar.
+                        <span>Creado para destacar.</span>
+                    </h2>
+                </div>
+
+                <div class="intro-description reveal">
+                    <p>
+                        Selecciona un producto de nuestra colección
+                        para explorarlo desde cualquier ángulo con
+                        el visualizador tridimensional.
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- PRODUCTOS -->
+
+    <section
+        class="collection-section"
+        id="coleccion"
+    >
+
+        <div class="container">
+
+            <div class="products-grid">
+
+                <!-- PRODUCTO 1 -->
+
+                <article
+                    class="product-card product-large reveal"
+                    data-name="Heritage 01"
+                    data-price="Q 399"
+                    data-category="Casual · Cuero negro"
+                    data-image="imagenes/1.jpeg"
+                    data-model="modelos/botita.glb?v=2"
+                    onclick="verProducto(this)"
+                >
+
+                    <div class="product-image">
+
+                        <img
+                            src="imagenes/1.jpeg"
+                            alt="Bota Heritage 01"
+                        >
+
+                        <span class="product-label">
+                            NUEVO
+                        </span>
+
+                        <button
+                            class="product-arrow"
+                            type="button"
+                            aria-label="Ver Heritage 01 en 3D"
+                        >
+                            ↗
+                        </button>
+
+                    </div>
+
+                    <div class="product-data">
+
+                        <div>
+                            <span class="product-category">
+                                Casual · Cuero negro
+                            </span>
+
+                            <h3>Heritage 01</h3>
+                        </div>
+
+                        <strong>Q 399</strong>
+
+                    </div>
+
+                <div class="shop-actions"><label>Talla <select class="shop-size" aria-label="Talla"><option value="">Seleccionar</option><option>35</option><option>36</option><option>37</option><option>38</option><option>39</option><option>40</option><option>41</option><option>42</option><option>43</option><option>44</option><option>45</option></select></label><label>Color <select class="shop-color" aria-label="Color"><option>Según fotografía</option><option>Negro</option><option>Café</option></select></label><button class="shop-add" type="button">Agregar al carrito</button></div></article>
+
+                <!-- PRODUCTO 2 -->
+
+                <article
+                    class="product-card reveal"
+                    data-name="Classic 02"
+                    data-price="Q 449"
+                    data-category="Formal · Piel lisa"
+                    data-image="imagenes/2.jpeg"
+                    data-model="modelos/2.glb?v=2"
+                    onclick="verProducto(this)"
+                >
+
+                    <div class="product-image">
+
+                        <img
+                            src="imagenes/2.jpeg"
+                            alt="Zapato Classic 02"
+                            loading="lazy"
+                        >
+
+                        <span class="product-label">
+                            CLÁSICO
+                        </span>
+
+                        <button
+                            class="product-arrow"
+                            type="button"
+                            aria-label="Ver Classic 02 en 3D"
+                        >
+                            ↗
+                        </button>
+
+                    </div>
+
+                    <div class="product-data">
+
+                        <div>
+                            <span class="product-category">
+                                Formal · Piel lisa
+                            </span>
+
+                            <h3>Classic 02</h3>
+                        </div>
+
+                        <strong>Q 449</strong>
+
+                    </div>
+
+                <div class="shop-actions"><label>Talla <select class="shop-size" aria-label="Talla"><option value="">Seleccionar</option><option>35</option><option>36</option><option>37</option><option>38</option><option>39</option><option>40</option><option>41</option><option>42</option><option>43</option><option>44</option><option>45</option></select></label><label>Color <select class="shop-color" aria-label="Color"><option>Según fotografía</option><option>Negro</option><option>Café</option></select></label><button class="shop-add" type="button">Agregar al carrito</button></div></article>
+
+                <!-- PRODUCTO 3 -->
+
+                <article
+                    class="product-card reveal"
+                    data-name="Oxford 03"
+                    data-price="Q 499"
+                    data-category="Elegante · Charol"
+                    data-image="imagenes/3.jpeg"
+                    data-model="modelos/3.glb?v=2"
+                    onclick="verProducto(this)"
+                >
+
+                    <div class="product-image">
+
+                        <img
+                            src="imagenes/3.jpeg"
+                            alt="Zapato Oxford 03"
+                            loading="lazy"
+                        >
+
+                        <span class="product-label">
+                            PREMIUM
+                        </span>
+
+                        <button
+                            class="product-arrow"
+                            type="button"
+                            aria-label="Ver Oxford 03 en 3D"
+                        >
+                            ↗
+                        </button>
+
+                    </div>
+
+                    <div class="product-data">
+
+                        <div>
+                            <span class="product-category">
+                                Elegante · Charol
+                            </span>
+
+                            <h3>Oxford 03</h3>
+                        </div>
+
+                        <strong>Q 499</strong>
+
+                    </div>
+
+                <div class="shop-actions"><label>Talla <select class="shop-size" aria-label="Talla"><option value="">Seleccionar</option><option>35</option><option>36</option><option>37</option><option>38</option><option>39</option><option>40</option><option>41</option><option>42</option><option>43</option><option>44</option><option>45</option></select></label><label>Color <select class="shop-color" aria-label="Color"><option>Según fotografía</option><option>Negro</option><option>Café</option></select></label><button class="shop-add" type="button">Agregar al carrito</button></div></article>
+
+                <!-- PRODUCTO 4 -->
+
+                <article
+                    class="product-card reveal"
+                    data-name="Modelo 04"
+                    data-price="Consultar precio"
+                    data-category="Calzado artesanal"
+                    data-image="imagenes/4.jpeg"
+                    data-model="modelos/4.glb?v=2"
+                    onclick="verProducto(this)"
+                >
+
+                    <div class="product-image">
+
+                        <img
+                            src="imagenes/4.jpeg"
+                            alt="Calzado del modelo 04"
+                            loading="lazy"
+                        >
+
+                        <span class="product-label">
+                            MODELO 04
+                        </span>
+
+                        <button
+                            class="product-arrow"
+                            type="button"
+                            aria-label="Ver modelo 04 en 3D"
+                        >
+                            ↗
+                        </button>
+
+                    </div>
+
+                    <div class="product-data">
+
+                        <div>
+                            <span class="product-category">
+                                Calzado artesanal
+                            </span>
+
+                            <h3>Modelo 04</h3>
+                        </div>
+
+                        <strong>Consultar precio</strong>
+
+                    </div>
+
+                <div class="shop-actions"><label>Talla <select class="shop-size" aria-label="Talla"><option value="">Seleccionar</option><option>35</option><option>36</option><option>37</option><option>38</option><option>39</option><option>40</option><option>41</option><option>42</option><option>43</option><option>44</option><option>45</option></select></label><label>Color <select class="shop-color" aria-label="Color"><option>Según fotografía</option><option>Negro</option><option>Café</option></select></label><button class="shop-add" type="button">Agregar al carrito</button></div></article>
+
+                <!-- PRODUCTO 6 -->
+
+                <article
+                    class="product-card reveal"
+                    data-name="Modelo 06"
+                    data-price="Consultar precio"
+                    data-category="Calzado artesanal"
+                    data-image="imagenes/6.jpeg"
+                    data-model="modelos/6.glb?v=2"
+                    onclick="verProducto(this)"
+                >
+
+                    <div class="product-image">
+
+                        <img
+                            src="imagenes/6.jpeg"
+                            alt="Calzado del modelo 06"
+                            loading="lazy"
+                        >
+
+                        <span class="product-label">
+                            MODELO 06
+                        </span>
+
+                        <button
+                            class="product-arrow"
+                            type="button"
+                            aria-label="Ver modelo 06 en 3D"
+                        >
+                            ↗
+                        </button>
+
+                    </div>
+
+                    <div class="product-data">
+
+                        <div>
+                            <span class="product-category">
+                                Calzado artesanal
+                            </span>
+
+                            <h3>Modelo 06</h3>
+                        </div>
+
+                        <strong>Consultar precio</strong>
+
+                    </div>
+
+                <div class="shop-actions"><label>Talla <select class="shop-size" aria-label="Talla"><option value="">Seleccionar</option><option>35</option><option>36</option><option>37</option><option>38</option><option>39</option><option>40</option><option>41</option><option>42</option><option>43</option><option>44</option><option>45</option></select></label><label>Color <select class="shop-color" aria-label="Color"><option>Según fotografía</option><option>Negro</option><option>Café</option></select></label><button class="shop-add" type="button">Agregar al carrito</button></div></article>
+
+                <!-- PRODUCTO 7 -->
+
+                <article
+                    class="product-card reveal"
+                    data-name="Modelo 07"
+                    data-price="Consultar precio"
+                    data-category="Calzado artesanal"
+                    data-image="imagenes/7.jpeg"
+                    data-model="modelos/7.glb?v=2"
+                    onclick="verProducto(this)"
+                >
+
+                    <div class="product-image">
+
+                        <img
+                            src="imagenes/7.jpeg"
+                            alt="Calzado del modelo 07"
+                            loading="lazy"
+                        >
+
+                        <span class="product-label">
+                            MODELO 07
+                        </span>
+
+                        <button
+                            class="product-arrow"
+                            type="button"
+                            aria-label="Ver modelo 07 en 3D"
+                        >
+                            ↗
+                        </button>
+
+                    </div>
+
+                    <div class="product-data">
+
+                        <div>
+                            <span class="product-category">
+                                Calzado artesanal
+                            </span>
+
+                            <h3>Modelo 07</h3>
+                        </div>
+
+                        <strong>Consultar precio</strong>
+
+                    </div>
+
+                <div class="shop-actions"><label>Talla <select class="shop-size" aria-label="Talla"><option value="">Seleccionar</option><option>35</option><option>36</option><option>37</option><option>38</option><option>39</option><option>40</option><option>41</option><option>42</option><option>43</option><option>44</option><option>45</option></select></label><label>Color <select class="shop-color" aria-label="Color"><option>Según fotografía</option><option>Negro</option><option>Café</option></select></label><button class="shop-add" type="button">Agregar al carrito</button></div></article>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- EXPERIENCIA 3D -->
+
+    <section
+        class="experience-section"
+        id="experiencia"
+    >
+
+        <div class="container">
+
+            <div class="experience-grid">
+
+                <div class="experience-copy">
+
+                    <div class="section-index light">
+                        02 / EXPERIENCIA
+                    </div>
+
+                    <span class="experience-badge">
+                        MODELO INTERACTIVO
+                    </span>
+
+                    <h2 class="reveal">
+                        No solo lo mires.
+                        <span>Explóralo.</span>
+                    </h2>
+
+                    <p class="experience-description reveal">
+                        Gira el producto, acércate a los detalles
+                        y visualízalo desde cualquier perspectiva.
+                        Desde un dispositivo compatible también podrás
+                        utilizar realidad aumentada.
+                    </p>
+
+                    <div class="steps reveal">
+
+                        <div class="step">
+
+                            <span>01</span>
+
+                            <div>
+                                <h4>Selecciona</h4>
+
+                                <p>
+                                    Elige un producto de la colección.
+                                </p>
+                            </div>
+
+                        </div>
+
+                        <div class="step">
+
+                            <span>02</span>
+
+                            <div>
+                                <h4>Explora</h4>
+
+                                <p>
+                                    Arrastra para girar y acerca
+                                    para observar los detalles.
+                                </p>
+                            </div>
+
+                        </div>
+
+                        <div class="step">
+
+                            <span>03</span>
+
+                            <div>
+                                <h4>Activa la RA</h4>
+
+                                <p>
+                                    Coloca virtualmente el modelo
+                                    en tu espacio.
+                                </p>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <p class="mobile-model-hint" id="mobileModelHint" hidden>
+                        <span aria-hidden="true">↓</span>
+                        <span><strong>Tu modelo 3D está más abajo.</strong><br>Desliza hacia abajo para verlo y explorar el zapato en tu espacio.</span>
+                    </p>
+
+                </div>
+
+                <!-- VISOR -->
+
+                <div class="experience-visual reveal">
+
+                    <div class="viewer-card">
+
+                        <div class="viewer-header">
+
+                            <div>
+                                <span class="viewer-label">
+                                    MODELO SELECCIONADO
+                                </span>
+
+                                <h3 id="viewerName">
+                                    Heritage 01
+                                </h3>
+
+                                <p id="viewerCategory">
+                                    Casual · Cuero negro
+                                </p>
+                            </div>
+
+                            <div class="viewer-price">
+                                <span>PRECIO</span>
+
+                                <strong id="viewerPrice">
+                                    Q 399
+                                </strong>
+                            </div>
+
+                        </div>
+
+                        <div class="model-container">
+
+                            <div class="viewer-status" id="viewerStatus" role="status" aria-live="polite" hidden>
+                                <span class="viewer-status-spinner" aria-hidden="true"></span>
+                                <span><strong id="viewerStatusTitle">Espera un momento...</strong><small id="viewerStatusDetail">Estamos preparando tu modelo 3D.</small></span>
+                            </div>
+
+                            <model-viewer
+                                id="modelo3D"
+                                src="modelos/botita.glb?v=2"
+                                poster="imagenes/1.jpeg"
+                                alt="Modelo tridimensional de Heritage 01"
+                                camera-controls
+                                camera-orbit="0deg 75deg 130%"
+                                camera-target="auto auto auto"
+                                field-of-view="30deg"
+                                touch-action="pan-y"
+                                auto-rotate
+                                auto-rotate-delay="1000"
+                                rotation-per-second="18deg"
+                                shadow-intensity="1"
+                                shadow-softness="0.8"
+                                exposure="1.2"
+                                environment-image="neutral"
+                                ar
+                                ar-modes="webxr scene-viewer quick-look"
+                                ar-scale="auto"
+                            >
+
+                                <button
+                                    slot="ar-button"
+                                    class="ar-button"
+                                    type="button"
+                                >
+                                    <svg
+                                        width="17"
+                                        height="17"
+                                        viewBox="0 0 24 24"
+                                        fill="none"
+                                        aria-hidden="true"
+                                    >
+                                        <path
+                                            d="M12 2L20 6.5V17.5L12 22L4 17.5V6.5L12 2Z"
+                                            stroke="currentColor"
+                                            stroke-width="1.5"
+                                        />
+
+                                        <path
+                                            d="M4 6.5L12 11L20 6.5"
+                                            stroke="currentColor"
+                                            stroke-width="1.5"
+                                        />
+
+                                        <path
+                                            d="M12 11V22"
+                                            stroke="currentColor"
+                                            stroke-width="1.5"
+                                        />
+                                    </svg>
+
+                                    Ver en mi espacio
+                                </button>
+
+                                <div
+                                    class="model-loading"
+                                    slot="progress-bar"
+                                >
+                                    <div class="model-loading-bar"></div>
+                                </div>
+
+                            </model-viewer>
+
+                        </div>
+
+                        <div class="viewer-footer">
+
+                            <div>
+                                <span class="viewer-control-icon">
+                                    ↔
+                                </span>
+
+                                <p>Arrastra para girar</p>
+                            </div>
+
+                            <div>
+                                <span class="viewer-control-icon">
+                                    ＋
+                                </span>
+
+                                <p>Acerca o aleja</p>
+                            </div>
+
+                            <div>
+                                <span class="viewer-control-icon">
+                                    AR
+                                </span>
+
+                                <p>Visualiza en tu espacio</p>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- NOSOTROS -->
+
+    <section
+        class="manifesto-section"
+        id="nosotros"
+    >
+
+        <div class="container">
+
+            <div class="manifesto-grid">
+
+                <div class="section-index">
+                    03 / MILIAN
+                </div>
+
+                <div class="manifesto-content">
+
+                    <span class="manifesto-label">
+                        NUESTRA ESENCIA
+                    </span>
+
+                    <h2 class="reveal">
+                        Calzado para quienes saben
+                        <span>apreciar los detalles.</span>
+                    </h2>
+
+                    <div class="manifesto-details reveal">
+
+                        <article>
+                            <span>01</span>
+
+                            <h3>Diseño</h3>
+
+                            <p>
+                                Modelos pensados para combinar presencia,
+                                comodidad y personalidad.
+                            </p>
+                        </article>
+
+                        <article>
+                            <span>02</span>
+
+                            <h3>Calidad</h3>
+
+                            <p>
+                                Materiales seleccionados y atención
+                                especial en cada acabado.
+                            </p>
+                        </article>
+
+                        <article>
+                            <span>03</span>
+
+                            <h3>Tecnología</h3>
+
+                            <p>
+                                Una nueva forma de explorar nuestros productos
+                                utilizando 3D y realidad aumentada.
+                            </p>
+                        </article>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- CTA -->
+
+    <section class="cta-section">
+
+        <div class="container">
+
+            <div class="cta-content reveal">
+
+                <span>CATÁLOGO MILIAN</span>
+
+                <h2>
+                    Encuentra tu
+                    <em>próximo par.</em>
+                </h2>
+
+                <a
+                    href="#coleccion"
+                    class="button button-dark"
+                >
+                    Explorar colección
+                    <span>→</span>
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        <div class="container">
+
+            <div class="footer-top">
+
+                <a
+                    href="#inicio"
+                    class="footer-logo"
+                >
+                    MILIAN
+                </a>
+
+                <div class="footer-links">
+
+                    <div>
+                        <span>NAVEGACIÓN</span>
+                        <a href="#inicio">Inicio</a>
+                        <a href="#coleccion">Colección</a>
+                        <a href="#experiencia">Experiencia 3D</a>
+                    </div>
+
+                    <div>
+                        <span>INFORMACIÓN</span>
+                        <a href="#nosotros">Nosotros</a>
+                        <a href="#">Contacto</a>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="footer-bottom">
+
+                <p>© 2026 Zapatería Milian</p>
+
+                <p>
+                    CATÁLOGO DIGITAL + REALIDAD AUMENTADA
+                </p>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+    <!-- MODAL DE CUENTA -->
+
+    <div
+        class="modal-overlay"
+        id="accountOverlay"
+        hidden
+    >
+
+        <div
+            class="account-modal"
+            role="dialog"
+            aria-modal="true"
+            aria-label="Cuenta Milian"
+        >
+
+            <button
+                class="modal-close"
+                id="accountClose"
+                type="button"
+                aria-label="Cerrar ventana"
+            >
+                ✕
+            </button>
+
+            <div class="modal-tabs">
+
+                <button
+                    id="tabLogin"
+                    class="modal-tab active"
+                    type="button"
+                >
+                    Iniciar sesión
+                </button>
+
+                <button
+                    id="tabRegister"
+                    class="modal-tab"
+                    type="button"
+                >
+                    Crear cuenta
+                </button>
+
+            </div>
+
+            <!-- LOGIN -->
+
+            <div
+                id="panelLogin"
+                class="modal-panel"
+            >
+
+                <h2>Bienvenido</h2>
+
+                <p class="modal-subtitle">
+                    Ingresa a tu cuenta Milian.
+                </p>
+
+                <form id="loginForm">
+
+                    <label for="loginEmail">
+                        Correo electrónico
+                    </label>
+
+                    <input
+                        type="email"
+                        id="loginEmail"
+                        autocomplete="email"
+                        required
+                    >
+
+                    <label for="loginPassword">
+                        Contraseña
+                    </label>
+
+                    <input
+                        type="password"
+                        id="loginPassword"
+                        autocomplete="current-password"
+                        required
+                    >
+
+                    <button
+                        type="submit"
+                        class="button button-copper modal-submit"
+                    >
+                        Iniciar sesión
+                    </button>
+
+                    <p
+                        id="loginFeedback"
+                        class="modal-feedback"
+                        aria-live="polite"
+                    ></p>
+
+                </form>
+
+            </div>
+
+            <!-- REGISTRO -->
+
+            <div
+                id="panelRegister"
+                class="modal-panel"
+                hidden
+            >
+
+                <h2>Crear cuenta</h2>
+
+                <p class="modal-subtitle">
+                    Regístrate para guardar tus productos favoritos.
+                </p>
+
+                <form id="registerForm">
+
+                    <label for="registerName">
+                        Nombre
+                    </label>
+
+                    <input
+                        type="text"
+                        id="registerName"
+                        autocomplete="name"
+                        required
+                    >
+
+                    <label for="registerEmail">
+                        Correo electrónico
+                    </label>
+
+                    <input
+                        type="email"
+                        id="registerEmail"
+                        autocomplete="email"
+                        required
+                    >
+
+                    <label for="registerPassword">
+                        Contraseña
+                    </label>
+
+                    <input
+                        type="password"
+                        id="registerPassword"
+                        autocomplete="new-password"
+                        minlength="8"
+                        required
+                    >
+
+                    <button
+                        type="submit"
+                        class="button button-copper modal-submit"
+                    >
+                        Crear cuenta
+                    </button>
+
+                    <p
+                        id="registerFeedback"
+                        class="modal-feedback"
+                        aria-live="polite"
+                    ></p>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- JAVASCRIPT -->
+
+    <script src="js/app.js"></script>
+
+
+<div id="cartOverlay" class="cart-overlay" hidden>
+ <section class="cart-panel" role="dialog" aria-modal="true" aria-labelledby="cartTitle">
+  <div class="cart-heading"><h2 id="cartTitle">Mi carrito</h2><button id="closeCart" type="button" aria-label="Cerrar carrito">✕</button></div>
+  <div id="cartItems" aria-live="polite"></div><p class="cart-total">Total de productos: <strong id="cartTotal">Q 0.00</strong></p>
+  <form id="checkoutForm">
+   <h3>Datos para el pedido</h3>
+   <label>Nombre completo <input name="nombre" autocomplete="name" required maxlength="100"></label>
+   <label>Teléfono <input name="telefono" autocomplete="tel" type="tel" required maxlength="25"></label>
+   <label>Entrega <select name="entrega" id="deliveryType"><option value="domicilio">Envío a domicilio</option><option value="recoger">Recoger en tienda</option></select></label>
+   <div id="deliveryFields"><label>Departamento <input name="departamento" required maxlength="80"></label><label>Municipio <input name="municipio" required maxlength="80"></label><label>Dirección completa <textarea name="direccion" required maxlength="250"></textarea></label><label>Referencia de entrega (opcional) <input name="referencia" maxlength="150"></label></div>
+   <label>Método de pago preferido <select name="pago"><option value="Por coordinar">Por coordinar con el negocio</option><option value="Transferencia (sujeta a confirmación)">Transferencia (sujeta a confirmación)</option><option value="Contra entrega (sujeto a confirmación)">Contra entrega (sujeto a confirmación)</option></select></label>
+   <label>Comentarios (opcional) <textarea name="comentarios" maxlength="250"></textarea></label>
+   <p class="cart-note">El envío y la disponibilidad se confirmarán por WhatsApp. Tus datos se incluirán en el mensaje para gestionar el pedido; no se guardan en este sitio.</p>
+   <label class="cart-consent"><input type="checkbox" required> Acepto compartir estos datos con el negocio para gestionar mi pedido.</label>
+   <p id="cartFeedback" role="status"></p><button class="checkout-button" type="submit">Preparar pedido para WhatsApp</button>
+  </form>
+ </section>
+</div>
+<script src="js/carrito.js" defer></script>
+</body>
+
+</html>
