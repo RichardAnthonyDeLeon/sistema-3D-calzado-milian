@@ -2,7 +2,7 @@
 // CONFIGURACIÓN DEL BACKEND
 // ========================================
 
-const API_URL = "http://localhost:3000/api";
+const API_URL = "/api";
 
 // ========================================
 // ELEMENTOS PRINCIPALES

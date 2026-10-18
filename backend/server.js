@@ -1,6 +1,7 @@
 require("dotenv").config();
 
 const express = require("express");
+const path = require("node:path");
 const cors = require("cors");
 const bcrypt = require("bcryptjs");
 
@@ -35,6 +36,27 @@ app.get("/api", (req, res) => {
         mensaje:
             "Servidor de Zapatería Milian funcionando."
     });
+});
+
+// ========================================
+// PRODUCTOS
+// ========================================
+
+// Catálogo público: solo datos del producto, nunca configuración de MySQL.
+app.get("/api/productos", async (req, res) => {
+    try {
+        const [productos] = await conexion.execute(`
+            SELECT id_producto, nombre, marca, categoria, descripcion,
+                   precio, tallas, colores, imagen, modelo_3d,
+                   disponible, fecha_registro
+            FROM productos
+            ORDER BY id_producto
+        `);
+        res.json(productos);
+    } catch {
+        console.error("No se pudo consultar el catálogo de productos.");
+        res.status(500).json({ mensaje: "No se pudieron obtener los productos." });
+    }
 });
 
 // ========================================
@@ -282,6 +304,20 @@ app.post(
         }
     }
 );
+
+// ========================================
+// FRONTEND (solo carpetas públicas; no exponer backend ni archivos privados)
+// ========================================
+
+const frontendDir = path.resolve(__dirname, "..");
+
+app.get(["/", "/index.html"], (req, res) => {
+    res.sendFile(path.join(frontendDir, "index.html"));
+});
+
+for (const carpeta of ["css", "js", "imagenes", "modelos"]) {
+    app.use(`/${carpeta}`, express.static(path.join(frontendDir, carpeta)));
+}
 
 // ========================================
 // RUTA NO ENCONTRADA

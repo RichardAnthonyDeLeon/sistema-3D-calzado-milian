@@ -1967,3 +1967,20 @@ footer {
 @media (prefers-reduced-motion: reduce) {
     .viewer-status-spinner { animation: none; }
 }
+.shop-share {
+    cursor: pointer;
+    background: #30251d;
+    color: #fff;
+    border: 0;
+    border-radius: 6px;
+    padding: 12px 16px;
+    font: inherit;
+    flex: 1;
+    min-width: 145px;
+}
+.shop-share:disabled { opacity: .5; cursor: wait; }
+.shop-share:focus-visible { outline: 2px solid currentColor; outline-offset: 3px; }
+.share-status, .share-link { flex-basis: 100%; font-size: 13px; }
+.share-status:empty { display: none; }
+.share-link { min-width: 0; width: 100%; padding: 8px; }
+.android-ar-note { font-size: .85rem; line-height: 1.6; margin-top: 20px; }
