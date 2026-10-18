@@ -8,15 +8,18 @@
 
     function lista(value) {
         const parsed = typeof value === "string" ? JSON.parse(value) : value;
-        if (!Array.isArray(parsed) || !parsed.length || parsed.some(item =>
+        if (!Array.isArray(parsed) || parsed.some(item =>
             !["string", "number"].includes(typeof item) || !String(item).trim()
         )) throw new Error("Lista inválida");
         return parsed.map(String);
     }
 
-    function ruta(value, original) {
-        // Esta integración conserva los recursos ya comprobados del catálogo.
-        if (value !== original) throw new Error("Ruta diferente al catálogo original");
+    function ruta(value, folder) {
+        if (typeof value !== "string" || !value.trim()) throw new Error("Ruta inválida");
+        const url = new URL(value, window.location.href);
+        if (url.origin !== window.location.origin || !url.pathname.startsWith(`/${folder}/`)) {
+            throw new Error("Recurso fuera de las carpetas públicas");
+        }
         return value;
     }
 
@@ -47,10 +50,11 @@
             // Un registro incorrecto no debe impedir actualizar los otros zapatos.
             const updates = cards.flatMap(card => {
                 try {
-                    const matches = rows.filter(row => row && row.nombre === card.dataset.name);
+                    const matches = rows.filter(row => row && String(row.id_producto) === card.dataset.idProducto);
                     if (matches.length !== 1) throw new Error("Producto ausente o duplicado");
                     const row = matches[0];
                     if (!/^[1-9]\d*$/.test(String(row.id_producto)) ||
+                        typeof row.nombre !== "string" || !row.nombre.trim() ||
                         typeof row.categoria !== "string" || !row.categoria.trim()) throw new Error("Datos inválidos");
                     const price = row.precio === null ? null : Number(row.precio);
                     if (row.precio !== null && (
@@ -63,7 +67,8 @@
                         category: card.querySelector(".product-category"),
                         image: card.querySelector(".product-image img"),
                         size: card.querySelector(".shop-size"),
-                        color: card.querySelector(".shop-color")
+                        color: card.querySelector(".shop-color"),
+                        add: card.querySelector(".shop-add")
                     };
                     if (Object.values(nodes).some(node => !node)) throw new Error("Tarjeta incompleta");
                     const optionalList = (value, selector) => {
@@ -72,27 +77,23 @@
                             return Array.from(card.querySelector(selector).options, option => option.value).filter(Boolean);
                         }
                     };
-                    const originalRoute = (value, original) => {
-                        try { return ruta(value, original); } catch {
-                            console.warn(`Se conserva el recurso original de ${row.nombre}.`);
-                            return original;
-                        }
-                    };
+                    if (![true, false, 1, 0, "1", "0"].includes(row.disponible)) throw new Error("Disponibilidad inválida");
                     return [{
                         card, row, nodes,
-                        priceText: price === null ? "Consultar precio" : `Q ${Number.isInteger(price) ? price : price.toFixed(2)}`,
+                        priceText: price === null ? "Consultar precio" : `Q ${price.toFixed(2)}`,
+                        available: [true, 1, "1"].includes(row.disponible),
                         sizes: optionalList(row.tallas, ".shop-size"), colors: optionalList(row.colores, ".shop-color"),
-                        image: originalRoute(row.imagen, card.dataset.image),
-                        model: originalRoute(row.modelo_3d, card.dataset.model)
+                        image: ruta(row.imagen, "imagenes"),
+                        model: ruta(row.modelo_3d, "modelos")
                     }];
                 } catch {
-                    console.warn(`No se actualizó ${card.dataset.name}: comprobar nombre único, ID, categoría y precio en la API.`);
+                    console.warn(`No se actualizó el producto ${card.dataset.idProducto}: comprobar ID único y datos válidos en la API.`);
                     return [];
                 }
             });
             if (new Set(updates.map(update => String(update.row.id_producto))).size !== updates.length) throw new Error("Identificadores duplicados");
 
-            updates.forEach(({ card, row, nodes, priceText, sizes, colors, image, model }) => {
+            updates.forEach(({ card, row, nodes, priceText, sizes, colors, image, model, available }) => {
                 card.dataset.idProducto = String(row.id_producto);
                 card.dataset.origen = "mysql";
                 card.dataset.name = row.nombre;
@@ -100,19 +101,27 @@
                 card.dataset.category = row.categoria;
                 card.dataset.image = image;
                 card.dataset.model = model;
+                card.dataset.description = row.descripcion == null ? "" : String(row.descripcion);
+                card.dataset.sizes = JSON.stringify(sizes);
+                card.dataset.colors = JSON.stringify(colors);
+                card.dataset.disponible = available ? "1" : "0";
                 nodes.name.textContent = row.nombre;
                 nodes.price.textContent = priceText;
                 nodes.category.textContent = row.categoria;
                 nodes.image.setAttribute("src", image);
+                nodes.image.setAttribute("alt", row.nombre);
+                const arrow = card.querySelector(".product-arrow");
+                if (arrow) arrow.setAttribute("aria-label", `Ver ${row.nombre} en 3D`);
+                const description = card.querySelector(".product-description");
+                if (description) description.textContent = card.dataset.description;
+                nodes.add.disabled = !available || sizes.length === 0 || colors.length === 0;
+                nodes.add.textContent = nodes.add.disabled ? "No disponible" : "Agregar al carrito";
                 opciones(nodes.size, sizes, true);
                 opciones(nodes.color, colors, false);
             });
-            // Sin cambiar model-viewer ni invocar la selección (que desplaza la página).
+            // Reutilizar la selección existente sin desplazar ni activar AR.
             const selected = cards.find(card => card.classList.contains("selected")) || cards[0];
-            for (const [id, value] of [["viewerName", selected.dataset.name], ["viewerPrice", selected.dataset.price], ["viewerCategory", selected.dataset.category]]) {
-                const node = document.getElementById(id);
-                if (node) node.textContent = value;
-            }
+            if (updates.some(update => update.card === selected)) window.verProducto(selected, { desplazar: false });
             return updates.map(update => update.card);
         } catch {
             console.warn("No se actualizó el catálogo desde la API; se conservan los productos originales.");

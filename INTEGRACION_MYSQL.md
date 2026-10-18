@@ -104,9 +104,13 @@ No abrir puertos 3000/3306 en el router ni exponer MySQL. La API HTTP se consume
 través del túnel HTTPS existente, no conectando el navegador a MySQL. Mantener
 el acceso directo al puerto de Node restringido por la configuración local/red.
 
-Las consultas del catálogo y de autenticación utilizan `/api` en el mismo origen.
+Las consultas públicas del catálogo utilizan `/api` en el mismo origen.
 No requieren una URL de API adicional ni llamadas a localhost desde el teléfono.
-Las rutas del servidor y su conexión privada permanecen sin cambios.
+Se eliminaron las rutas `/api/login` y `/api/registro`, los controles de cuenta
+y las dependencias exclusivas de autenticación. Reiniciar Express para aplicar
+la eliminación de rutas. La conexión privada MySQL permanece sin cambios.
+La inspección de tablas realizada al retirar la autenticación devolvió únicamente
+`productos`; no se eliminó ni modificó ninguna tabla.
 
 ## Comprobación y límites
 
