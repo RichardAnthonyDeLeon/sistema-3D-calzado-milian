@@ -52,9 +52,7 @@ body {
 }
 
 
-body.modal-open {
-    overflow: hidden;
-}
+
 
 
 img {
@@ -225,31 +223,13 @@ button {
 }
 
 
-.account-button {
-    border: 0;
-
-    background: transparent;
-
-    color: rgba(255,255,255,.8);
-
-    display: flex;
-
-    align-items: center;
-
-    gap: 8px;
-
-    transition: .25s;
-}
 
 
-.account-button:hover {
-    color: var(--copper-light);
-}
 
 
-.account-button span {
-    font-size: .75rem;
-}
+
+
+
 
 
 .menu-button {
@@ -495,16 +475,10 @@ button {
 }
 
 
-.button-copper {
-    background: var(--copper);
-
-    color: white;
-}
 
 
-.button-copper:hover {
-    background: var(--copper-light);
-}
+
+
 
 
 .button-dark {
@@ -1387,200 +1361,6 @@ footer {
 
 
 /* ========================================
-   MODAL
-======================================== */
-
-.modal-overlay {
-    position: fixed;
-
-    inset: 0;
-
-    z-index: 3000;
-
-    padding: 25px;
-
-    background:
-        rgba(0,0,0,.75);
-
-    backdrop-filter: blur(8px);
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    opacity: 0;
-
-    transition: .3s;
-}
-
-
-.modal-overlay[hidden] {
-    display: none;
-}
-
-
-.modal-overlay.is-open {
-    opacity: 1;
-}
-
-
-.account-modal {
-    position: relative;
-
-    width:
-        min(100%, 430px);
-
-    padding:
-        45px 38px;
-
-    background: var(--cream);
-
-    transform:
-        translateY(15px);
-
-    transition: .3s;
-}
-
-
-.modal-overlay.is-open
-.account-modal {
-    transform:
-        translateY(0);
-}
-
-
-.modal-close {
-    position: absolute;
-
-    top: 15px;
-    right: 15px;
-
-    width: 35px;
-    height: 35px;
-
-    border: 0;
-
-    border-radius: 50%;
-
-    background: transparent;
-}
-
-
-.modal-close:hover {
-    background:
-        rgba(0,0,0,.06);
-}
-
-
-.modal-tabs {
-    display: flex;
-
-    gap: 25px;
-
-    margin-bottom: 30px;
-
-    border-bottom:
-        1px solid #d7d1c9;
-}
-
-
-.modal-tab {
-    padding-bottom: 13px;
-
-    border: 0;
-
-    border-bottom:
-        2px solid transparent;
-
-    background: transparent;
-
-    color: var(--gray);
-
-    font-size: .8rem;
-}
-
-
-.modal-tab.active {
-    color: var(--black);
-
-    border-bottom-color:
-        var(--copper);
-}
-
-
-.modal-panel h2 {
-    font-size: 1.7rem;
-
-    font-weight: 500;
-}
-
-
-.modal-subtitle {
-    margin-top: 8px;
-
-    color: var(--gray);
-
-    font-size: .83rem;
-
-    line-height: 1.6;
-}
-
-
-.modal-panel form {
-    margin-top: 25px;
-
-    display: flex;
-
-    flex-direction: column;
-}
-
-
-.modal-panel label {
-    margin:
-        15px 0
-        7px;
-
-    font-size: .6rem;
-
-    font-weight: 700;
-
-    letter-spacing: .1em;
-
-    text-transform: uppercase;
-}
-
-
-.modal-panel input {
-    padding: 13px;
-
-    border:
-        1px solid #d8d1c8;
-
-    background: white;
-}
-
-
-.modal-submit {
-    width: 100%;
-
-    margin-top: 25px;
-}
-
-
-.modal-feedback {
-    min-height: 20px;
-
-    margin-top: 12px;
-
-    color: var(--copper);
-
-    font-size: .76rem;
-}
-
-
-/* ========================================
    ANIMACIONES
 ======================================== */
 
@@ -1695,9 +1475,7 @@ footer {
 
 @media (max-width: 700px) {
 
-    .account-button span {
-        display: none;
-    }
+
 
 
     .hero {

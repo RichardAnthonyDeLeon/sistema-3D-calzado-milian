@@ -57,37 +57,6 @@
                 <button class="cart-trigger" id="openCart" type="button" aria-label="Abrir carrito">🛒 Carrito <span id="cartCount">0</span></button>
 
                 <button
-                    class="account-button"
-                    id="accountButton"
-                    type="button"
-                >
-                    <svg
-                        width="17"
-                        height="17"
-                        viewBox="0 0 16 16"
-                        fill="none"
-                        aria-hidden="true"
-                    >
-                        <circle
-                            cx="8"
-                            cy="5.2"
-                            r="2.9"
-                            stroke="currentColor"
-                            stroke-width="1.2"
-                        />
-
-                        <path
-                            d="M2.3 14c.9-3 3-4.5 5.7-4.5s4.8 1.5 5.7 4.5"
-                            stroke="currentColor"
-                            stroke-width="1.2"
-                            stroke-linecap="round"
-                        />
-                    </svg>
-
-                    <span>Mi cuenta</span>
-                </button>
-
-                <button
                     class="menu-button"
                     id="menuButton"
                     type="button"
@@ -227,6 +196,7 @@
 
                 <article
                     class="product-card product-large reveal"
+                    data-id-producto="14"
                     data-name="Heritage 01"
                     data-price="Q 399"
                     data-category="Casual · Cuero negro"
@@ -276,6 +246,7 @@
 
                 <article
                     class="product-card reveal"
+                    data-id-producto="15"
                     data-name="Classic 02"
                     data-price="Q 449"
                     data-category="Formal · Piel lisa"
@@ -326,6 +297,7 @@
 
                 <article
                     class="product-card reveal"
+                    data-id-producto="16"
                     data-name="Oxford 03"
                     data-price="Q 499"
                     data-category="Elegante · Charol"
@@ -376,6 +348,7 @@
 
                 <article
                     class="product-card reveal"
+                    data-id-producto="17"
                     data-name="Modelo 04"
                     data-price="Consultar precio"
                     data-category="Calzado artesanal"
@@ -426,6 +399,7 @@
 
                 <article
                     class="product-card reveal"
+                    data-id-producto="18"
                     data-name="Modelo 06"
                     data-price="Consultar precio"
                     data-category="Calzado artesanal"
@@ -476,6 +450,7 @@
 
                 <article
                     class="product-card reveal"
+                    data-id-producto="19"
                     data-name="Modelo 07"
                     data-price="Consultar precio"
                     data-category="Calzado artesanal"
@@ -910,175 +885,6 @@
 
     </footer>
 
-    <!-- MODAL DE CUENTA -->
-
-    <div
-        class="modal-overlay"
-        id="accountOverlay"
-        hidden
-    >
-
-        <div
-            class="account-modal"
-            role="dialog"
-            aria-modal="true"
-            aria-label="Cuenta Milian"
-        >
-
-            <button
-                class="modal-close"
-                id="accountClose"
-                type="button"
-                aria-label="Cerrar ventana"
-            >
-                ✕
-            </button>
-
-            <div class="modal-tabs">
-
-                <button
-                    id="tabLogin"
-                    class="modal-tab active"
-                    type="button"
-                >
-                    Iniciar sesión
-                </button>
-
-                <button
-                    id="tabRegister"
-                    class="modal-tab"
-                    type="button"
-                >
-                    Crear cuenta
-                </button>
-
-            </div>
-
-            <!-- LOGIN -->
-
-            <div
-                id="panelLogin"
-                class="modal-panel"
-            >
-
-                <h2>Bienvenido</h2>
-
-                <p class="modal-subtitle">
-                    Ingresa a tu cuenta Milian.
-                </p>
-
-                <form id="loginForm">
-
-                    <label for="loginEmail">
-                        Correo electrónico
-                    </label>
-
-                    <input
-                        type="email"
-                        id="loginEmail"
-                        autocomplete="email"
-                        required
-                    >
-
-                    <label for="loginPassword">
-                        Contraseña
-                    </label>
-
-                    <input
-                        type="password"
-                        id="loginPassword"
-                        autocomplete="current-password"
-                        required
-                    >
-
-                    <button
-                        type="submit"
-                        class="button button-copper modal-submit"
-                    >
-                        Iniciar sesión
-                    </button>
-
-                    <p
-                        id="loginFeedback"
-                        class="modal-feedback"
-                        aria-live="polite"
-                    ></p>
-
-                </form>
-
-            </div>
-
-            <!-- REGISTRO -->
-
-            <div
-                id="panelRegister"
-                class="modal-panel"
-                hidden
-            >
-
-                <h2>Crear cuenta</h2>
-
-                <p class="modal-subtitle">
-                    Regístrate para guardar tus productos favoritos.
-                </p>
-
-                <form id="registerForm">
-
-                    <label for="registerName">
-                        Nombre
-                    </label>
-
-                    <input
-                        type="text"
-                        id="registerName"
-                        autocomplete="name"
-                        required
-                    >
-
-                    <label for="registerEmail">
-                        Correo electrónico
-                    </label>
-
-                    <input
-                        type="email"
-                        id="registerEmail"
-                        autocomplete="email"
-                        required
-                    >
-
-                    <label for="registerPassword">
-                        Contraseña
-                    </label>
-
-                    <input
-                        type="password"
-                        id="registerPassword"
-                        autocomplete="new-password"
-                        minlength="8"
-                        required
-                    >
-
-                    <button
-                        type="submit"
-                        class="button button-copper modal-submit"
-                    >
-                        Crear cuenta
-                    </button>
-
-                    <p
-                        id="registerFeedback"
-                        class="modal-feedback"
-                        aria-live="polite"
-                    ></p>
-
-                </form>
-
-            </div>
-
-        </div>
-
-    </div>
-
     <!-- JAVASCRIPT -->
 
     <script src="js/app.js"></script>
@@ -1103,7 +909,7 @@
  </section>
 </div>
 <script src="js/carrito.js" defer></script>
-<script src="js/catalogo.js?v=3" defer></script>
+<script src="js/catalogo.js?v=4" defer></script>
 <script src="js/compartir.js?v=1" defer></script>
 </body>
 
