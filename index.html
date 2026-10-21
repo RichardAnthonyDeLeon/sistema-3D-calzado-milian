@@ -19,6 +19,8 @@
     <!-- CSS -->
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/carrito.css">
+    <link rel="stylesheet" href="css/propuestas.css">
+    <link rel="stylesheet" href="css/negocio.css">
 
     <!-- MODEL VIEWER -->
     <script
@@ -51,6 +53,8 @@
                 <a href="#coleccion">Colección</a>
                 <a href="#experiencia">Experiencia 3D</a>
                 <a href="#nosotros">Oficio</a>
+                <a href="#propuestas">Proponer diseño</a>
+                <a class="business-access" href="/administracion">Acceso del negocio ↗</a>
             </div>
 
             <div class="nav-actions">
@@ -808,6 +812,44 @@
 
     </section>
 
+    <section class="proposals-section" id="propuestas">
+      <div class="container proposal-layout">
+        <div class="proposal-story">
+          <span class="proposal-eyebrow">HECHO A TU MANERA</span>
+          <h2>Tu idea.<br>Nuestro <em>oficio.</em></h2>
+          <p>Ese par que tienes en mente puede empezar aquí. Cuéntanos cómo lo imaginas y exploremos juntos sus posibilidades.</p>
+          <div class="proposal-editorial"><img src="imagenes/1.jpeg" alt="Botín de cuero de la colección Milián" loading="lazy"><span>Un detalle cambia todo.<br>El próximo puede ser tuyo.</span></div>
+          <ol class="proposal-steps"><li><b>01</b><div><strong>Imagina tu par</strong><span>Forma, color, materiales y detalles.</span></div></li><li><b>02</b><div><strong>Lo revisamos contigo</strong><span>Evaluamos tu idea y te contactamos.</span></div></li><li><b>03</b><div><strong>Conoce sus posibilidades</strong><span>Coordinamos viabilidad, precio y tiempos.</span></div></li></ol>
+        </div>
+        <div class="proposal-compose">
+          <span class="proposal-eyebrow">DISEÑEMOS ALGO TUYO</span><h3>Cuéntanos tu idea</h3><p>No necesitas saber de zapatos. Solo tener una idea.</p>
+          <form id="proposalForm" class="proposal-form">
+            <label>Tu nombre <input name="nombre" autocomplete="name" required minlength="2" maxlength="100" placeholder="Nombre y apellido"></label>
+            <label>Teléfono de contacto <input name="telefono" autocomplete="tel" type="tel" required maxlength="25" placeholder="Ej. 5555 1234"></label>
+            <label class="proposal-wide">Ponle un nombre a tu diseño <input name="titulo" required minlength="3" maxlength="120" placeholder="Ej. Mi botín de todos los días"></label>
+            <label>Talla deseada <input name="talla" required maxlength="30" placeholder="Ej. 38"></label>
+            <label>Color que imaginas <input name="color" required maxlength="80" placeholder="Ej. Café con detalles beige"></label>
+            <label class="proposal-wide">¿Cómo sería tu par ideal? <textarea name="descripcion" required minlength="20" maxlength="2000" rows="4" placeholder="Cuéntanos sobre la forma, material, suela y esos pequeños detalles que lo harían tuyo."></textarea></label>
+            <label class="proposal-wide proposal-upload">Una imagen para inspirarnos <input id="proposalImage" type="file" accept="image/jpeg,image/png,image/webp"><span>Opcional · JPG, PNG o WebP · Máximo 500 KB</span><img id="proposalImagePreview" alt="Vista previa de tu referencia" hidden></label>
+            <label class="proposal-wide cart-consent"><input type="checkbox" name="consentimiento" required> Acepto que Milián guarde mi propuesta y mis datos para evaluarla y contactarme.</label>
+            <button class="checkout-button proposal-wide" type="submit">Enviar mi propuesta <span aria-hidden="true">↗</span></button>
+            <p class="proposal-wide proposal-disclaimer">Enviar una idea no confirma su fabricación ni su precio. Primero conversamos contigo.</p>
+            <div class="proposal-wide" id="proposalFeedback" role="status" aria-live="polite"></div>
+          </form>
+        </div>
+
+      </div>
+    </section>
+
+    <section id="taller" class="business-section atelier-section">
+      <div class="container"><div class="business-heading"><div><span class="proposal-eyebrow">MATERIALES, FORMAS, DETALLES</span><h2>El oficio,<br><em>de cerca.</em></h2></div><p id="businessStory">Calzado elaborado con atención al detalle. Explora la colección y comparte tu idea para un diseño personalizado.</p></div>
+        <div id="businessGallery" class="business-gallery"></div>
+        <div class="craft-process"><article><span>01 / EXPLORA</span><h3>Conoce cada detalle.</h3><p>Descubre los acabados de la colección y explora sus modelos en 3D.</p></article><article><span>02 / CONVERSEMOS</span><h3>Encuentra tu estilo.</h3><p>Elige un modelo o comparte tu propia idea para que el negocio la evalúe contigo.</p></article><article><span>03 / COORDINAMOS</span><h3>De la idea al siguiente paso.</h3><p>Confirma disponibilidad, precio y entrega antes de concretar tu pedido.</p></article></div>
+      </div>
+    </section>
+    <section id="opiniones" class="business-section reviews-section" hidden><div class="container"><span class="proposal-eyebrow">HISTORIAS COMPARTIDAS</span><h2>En sus propias palabras.</h2><div id="businessReviews" class="business-reviews"></div></div></section>
+    <section id="contacto" class="business-section contact-section"><div class="container contact-layout"><div><span class="proposal-eyebrow">ANTES DE ELEGIR TU PAR</span><h2>Hablemos<br>de los <em>detalles.</em></h2><p>Consulta tus dudas y coordina tu pedido directamente con el negocio.</p><a id="businessWhatsapp" class="business-whatsapp" href="https://wa.me/50249498131" target="_blank" rel="noopener noreferrer">Conversar por WhatsApp <span aria-hidden="true">↗</span></a><div id="businessLocation" class="business-fact" hidden></div><div id="businessHours" class="business-fact" hidden></div></div><div><div id="businessFaq" class="business-faq"></div><p id="businessInfoStatus" class="business-info-status" role="status"></p></div></div></section>
+
     <!-- CTA -->
 
     <section class="cta-section">
@@ -864,7 +906,9 @@
                     <div>
                         <span>INFORMACIÓN</span>
                         <a href="#nosotros">Nosotros</a>
-                        <a href="#">Contacto</a>
+                        <a href="#taller">El oficio de cerca</a>
+                        <a href="#contacto">Contacto y preguntas</a>
+                        <a href="/administracion">Acceso del negocio ↗</a>
                     </div>
 
                 </div>
@@ -902,13 +946,18 @@
    <div id="deliveryFields"><label>Departamento <input name="departamento" required maxlength="80"></label><label>Municipio <input name="municipio" required maxlength="80"></label><label>Dirección completa <textarea name="direccion" required maxlength="250"></textarea></label><label>Referencia de entrega (opcional) <input name="referencia" maxlength="150"></label></div>
    <label>Método de pago preferido <select name="pago"><option value="Por coordinar">Por coordinar con el negocio</option><option value="Transferencia (sujeta a confirmación)">Transferencia (sujeta a confirmación)</option><option value="Contra entrega (sujeto a confirmación)">Contra entrega (sujeto a confirmación)</option></select></label>
    <label>Comentarios (opcional) <textarea name="comentarios" maxlength="250"></textarea></label>
-   <p class="cart-note">El envío y la disponibilidad se confirmarán por WhatsApp. Tus datos se incluirán en el mensaje para gestionar el pedido; no se guardan en este sitio.</p>
-   <label class="cart-consent"><input type="checkbox" required> Acepto compartir estos datos con el negocio para gestionar mi pedido.</label>
-   <p id="cartFeedback" role="status"></p><button class="checkout-button" type="submit">Preparar pedido para WhatsApp</button>
+   <p class="cart-note">El envío y la disponibilidad se confirmarán por WhatsApp. Al preparar la solicitud guardaremos tus datos y productos para que el negocio dé seguimiento. También se incluirán en el mensaje de WhatsApp.</p>
+   <label class="cart-consent"><input type="checkbox" name="consentimiento" required> Acepto que el negocio guarde estos datos y los use para gestionar mi pedido.</label>
+   <p id="cartFeedback" role="status"></p><button class="checkout-button" type="submit">Guardar solicitud y preparar WhatsApp</button>
   </form>
  </section>
 </div>
+<script src="js/api.js" defer></script>
+<script src="js/negocio.js" defer></script>
+<script src="js/validaciones.js" defer></script>
+<script src="js/reporte.js" defer></script>
 <script src="js/carrito.js" defer></script>
+<script src="js/propuestas.js" defer></script>
 <script src="js/catalogo.js?v=4" defer></script>
 <script src="js/compartir.js?v=1" defer></script>
 </body>

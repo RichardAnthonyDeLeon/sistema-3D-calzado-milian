@@ -22,7 +22,7 @@ app.use(cors());
 
 app.use(
     express.json({
-        limit: "100kb"
+        limit: "1mb"
     })
 );
 
@@ -62,10 +62,16 @@ app.get("/api/productos", async (req, res) => {
 // FRONTEND (solo carpetas públicas; no exponer backend ni archivos privados)
 // ========================================
 
+require("./solicitudes").registrarSolicitudes(app, conexion);
+
 const frontendDir = path.resolve(__dirname, "..");
 
 app.get(["/", "/index.html"], (req, res) => {
     res.sendFile(path.join(frontendDir, "index.html"));
+});
+
+app.get("/administracion", (req, res) => {
+    res.set("Cache-Control", "no-store").sendFile(path.join(frontendDir, "administracion.html"));
 });
 
 for (const carpeta of ["css", "js", "imagenes", "modelos"]) {
