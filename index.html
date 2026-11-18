@@ -960,6 +960,16 @@
 <script src="js/propuestas.js" defer></script>
 <script src="js/catalogo.js?v=4" defer></script>
 <script src="js/compartir.js?v=1" defer></script>
+<!-- acceso-negocio-local -->
+<script>
+if (['localhost', '127.0.0.1', '[::1]'].includes(location.hostname)) {
+  const panel = new URL('/administracion', location.href);
+  panel.port = '3000';
+  document.querySelectorAll('a[href="/administracion"]').forEach(enlace => {
+    enlace.href = panel.href;
+  });
+}
+</script>
 </body>
 
 </html>

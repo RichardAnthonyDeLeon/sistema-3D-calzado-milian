@@ -22,7 +22,7 @@ function prepararPedido(data, rows) {
     return { productos, total: productos.reduce((sum, item) => sum + Math.round(item.subtotal * 100), 0) / 100 };
 }
 function registrarSolicitudes(app, conexion) {
-    const administracion = require("./administracion").registrarAdministracion(app);
+    const administracion = require("./administracion").registrarAdministracion(app, conexion);
     // Limitar envíos por IP sin guardar datos del formulario en memoria.
     const ventanas = new Map();
     function limite(req, res, next) {

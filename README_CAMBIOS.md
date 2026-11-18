@@ -44,3 +44,34 @@ Desde `backend`, ejecuta `npm start` y abre `http://localhost:3000`. Reinicia Ex
 - Los formularios de pedidos informan que los datos se guardan para seguimiento. Los testimonios y políticas deben ser completados por el negocio antes de publicar.
 - No se envían WhatsApps automáticamente. Los enlaces abren el mensaje para revisión y envío manual.
 - Las nuevas funciones usan la misma sesión del administrador y las rutas privadas siguen bloqueadas sin iniciar sesión. No cambió la contraseña actual del dueño.
+
+## Usuarios del panel (migración 005)
+
+El acceso consulta `usuarios` en MySQL y verifica contraseñas scrypt con sal.
+No se incluyen usuarios ni contraseñas predeterminadas en el SQL o en Git.
+Se conservan las cookies HttpOnly, el control de origen y el límite de intentos.
+Los usuarios inactivos no pueden iniciar sesión.
+
+Después de actualizar el repositorio, desde `backend` y con MySQL encendido:
+
+```sh
+npm run db:usuarios
+npm start
+```
+
+El primer comando crea la tabla y registra `ADMIN_USER` con el hash privado de
+`ADMIN_PASSWORD_HASH` en `.env`. Si el usuario ya existe, no cambia su contraseña
+ni sus datos. El proceso que ejecuta este comando necesita CREATE, INSERT y SELECT
+en la tabla; el servidor necesita SELECT sobre `usuarios`. Como alternativa, ejecutar
+`database/005_usuarios.sql` con una cuenta de instalación y después el comando para
+registrar el administrador. El script principal también incluye la tabla.
+Las demás tablas requieren las migraciones 002, 003 y 004 en ese orden.
+
+Una vez que existe la tabla, la contraseña válida procede de MySQL; editar `.env`
+no cambia usuarios ya registrados. Para instalaciones antiguas sin la tabla, se
+conserva temporalmente el acceso mediante `.env`. Un fallo de conexión o permisos
+no permite usar ese acceso alternativo. Reiniciar el servidor después de actualizar.
+
+El enlace «Acceso del negocio» apunta al puerto 3000 en localhost/127.0.0.1,
+incluso al abrir el catálogo con Live Server. En un dominio publicado usa el
+mismo origen. El catálogo completo debe abrirse desde el backend para usar la API.

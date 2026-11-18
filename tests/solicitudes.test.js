@@ -62,7 +62,10 @@ test("panel exige sesión, rechaza clave antigua y cierra sesión correctamente"
     process.env.ADMIN_USER = "admin";
     try {
         let reads = 0;
-        const request = harness(async () => { reads++; return [[]]; });
+        const request = harness(async (sql) => {
+            if (sql.includes("FROM usuarios")) return [[{ usuario: "admin", password_hash: process.env.ADMIN_PASSWORD_HASH, activo: 1, rol: "administrador" }]];
+            reads++; return [[]];
+        });
         assert.equal((await request("GET /api/propuestas", null)).statusCode, 401);
         assert.equal((await request("GET /api/propuestas", null, { Authorization: "Bearer clave-antigua" })).statusCode, 401);
         assert.equal(reads, 0);
